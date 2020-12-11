@@ -1,2 +1,3 @@
-# http
+# HTTP
+
 HTTP declarations and utilities
