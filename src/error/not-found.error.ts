@@ -1,7 +1,16 @@
-export class NotFoundError extends Error {
-  public message: string;
-  public constructor(message: string = "Not Found") {
-    super(message);
+import { ExtendedError } from "./extended.error";
+
+export class NotFoundError extends ExtendedError {
+  public constructor(message?: unknown, data?: unknown) {
+    if (typeof message === "string") {
+      super(message, data);
+    } else {
+      if (message && typeof message === "object") {
+        super("Not Found", message);
+      } else {
+        super("Not Found", data);
+      }
+    }
     this.name = "NotFoundError";
   }
 }

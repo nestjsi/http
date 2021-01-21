@@ -1,7 +1,16 @@
-export class ConflictError extends Error implements Error {
-  public message: string;
-  public constructor(message: string = "Conflict") {
-    super(message);
+import { ExtendedError } from "./extended.error";
+
+export class ConflictError extends ExtendedError {
+  public constructor(message?: unknown, data?: unknown) {
+    if (typeof message === "string") {
+      super(message, data);
+    } else {
+      if (message && typeof message === "object") {
+        super("Conflict", message);
+      } else {
+        super("Conflict", data);
+      }
+    }
     this.name = "ConflictError";
   }
 }

@@ -12,6 +12,7 @@
   "dependencies": {
     "@nestjs/common": "^7.6.1",
     "@nestjsi/class-validator": "*",
+    "reflect-metadata": "0.1.13",
     "rxjs": "^6.6.3"
   },
   "description": "Additions for class validator",
@@ -67,5 +68,5 @@
   },
   "type": "module",
   "types": "./dist/index.d.ts",
-  "version": "0.0.2"
+  "version": "0.0.3"
 }

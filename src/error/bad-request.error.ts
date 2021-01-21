@@ -1,7 +1,16 @@
-export class BadRequestError extends Error implements Error {
-  public message: string;
-  public constructor(message: string = "Bad Request") {
-    super(message);
+import { ExtendedError } from "./extended.error";
+
+export class BadRequestError extends ExtendedError {
+  public constructor(message?: unknown, data?: unknown) {
+    if (typeof message === "string") {
+      super(message, data);
+    } else {
+      if (message && typeof message === "object") {
+        super("Bad Request", message);
+      } else {
+        super("Bad Request", data);
+      }
+    }
     this.name = "BadRequestError";
   }
 }

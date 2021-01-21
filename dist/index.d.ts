@@ -2,27 +2,33 @@ import { Observable } from "rxjs";
 import { CallHandler, ExecutionContext, NestInterceptor } from "@nestjs/common";
 
 export class BadRequestError extends Error implements Error {
-  message: string;
+  public readonly message: string;
+  public readonly data?: Record<string, unknown>;
   constructor(message?: string);
 }
 export class ConflictError extends Error implements Error {
-  message: string;
+  public readonly message: string;
+  public readonly data?: Record<string, unknown>;
   constructor(message?: string);
 }
 export class ForbiddenError extends Error implements Error {
-  message: string;
+  public readonly message: string;
+  public readonly data?: Record<string, unknown>;
   constructor(message?: string);
 }
 export class GoneError extends Error implements Error {
-  message: string;
+  public readonly message: string;
+  public readonly data?: Record<string, unknown>;
   constructor(message?: string);
 }
 export class InternalServerError extends Error {
-  message: string;
+  public readonly message: string;
+  public readonly data?: Record<string, unknown>;
   constructor(message?: string);
 }
 export class NotFoundError extends Error {
-  message: string;
+  public readonly message: string;
+  public readonly data?: Record<string, unknown>;
   constructor(message?: string);
 }
 export class BadRequestInterceptor implements NestInterceptor {
