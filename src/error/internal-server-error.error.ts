@@ -1,6 +1,6 @@
 import { ExtendedError } from "./extended.error";
 
-export class InternalServerError extends ExtendedError {
+export class InternalServerError extends ExtendedError implements Error {
   public constructor(message?: unknown, data?: unknown) {
     if (typeof message === "string") {
       super(message, data);

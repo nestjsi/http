@@ -1,35 +1,43 @@
 import { Observable } from "rxjs";
 import { CallHandler, ExecutionContext, NestInterceptor } from "@nestjs/common";
 
-export class BadRequestError extends Error implements Error {
+export class ExtendedError extends Error implements Error {
   public readonly message: string;
   public readonly data?: Record<string, unknown>;
-  constructor(message?: string);
+  public constructor(message?: string, data?: unknown);
+  public toJSON(): Record<string, unknown>;
+  public toString(): string;
 }
-export class ConflictError extends Error implements Error {
+
+export class BadRequestError extends ExtendedError implements Error {
   public readonly message: string;
   public readonly data?: Record<string, unknown>;
-  constructor(message?: string);
+  constructor(message?: unknown, data?: unknown);
 }
-export class ForbiddenError extends Error implements Error {
+export class ConflictError extends ExtendedError implements Error {
   public readonly message: string;
   public readonly data?: Record<string, unknown>;
-  constructor(message?: string);
+  constructor(message?: unknown, data?: unknown);
 }
-export class GoneError extends Error implements Error {
+export class ForbiddenError extends ExtendedError implements Error {
   public readonly message: string;
   public readonly data?: Record<string, unknown>;
-  constructor(message?: string);
+  constructor(message?: unknown, data?: unknown);
 }
-export class InternalServerError extends Error {
+export class GoneError extends ExtendedError implements Error {
   public readonly message: string;
   public readonly data?: Record<string, unknown>;
-  constructor(message?: string);
+  constructor(message?: unknown, data?: unknown);
 }
-export class NotFoundError extends Error {
+export class InternalServerError extends ExtendedError implements Error {
   public readonly message: string;
   public readonly data?: Record<string, unknown>;
-  constructor(message?: string);
+  constructor(message?: unknown, data?: unknown);
+}
+export class NotFoundError extends ExtendedError implements Error {
+  public readonly message: string;
+  public readonly data?: Record<string, unknown>;
+  constructor(message?: unknown, data?: unknown);
 }
 export class BadRequestInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any>;

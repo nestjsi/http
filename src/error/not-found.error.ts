@@ -1,6 +1,6 @@
 import { ExtendedError } from "./extended.error";
 
-export class NotFoundError extends ExtendedError {
+export class NotFoundError extends ExtendedError implements Error {
   public constructor(message?: unknown, data?: unknown) {
     if (typeof message === "string") {
       super(message, data);

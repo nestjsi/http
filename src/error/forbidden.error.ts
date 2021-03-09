@@ -1,4 +1,6 @@
-export class ForbiddenError extends Error implements Error {
+import { ExtendedError } from "./extended.error";
+
+export class ForbiddenError extends ExtendedError implements Error {
   public message: string;
   public constructor(message: string = "Forbidden") {
     super(message);
